@@ -1,0 +1,14 @@
+name = Falcor
+description = A boilerplate theme packaged with Modernizr, jquery 1.7.1, Flexslider, inuitCSS 4.5.5, and a boxsizing polyfill.
+core = 7.x
+engine = phptemplate
+
+stylesheets[all][] = css/style.css
+
+scripts[] = js/plugins.js
+scripts[] = js/script.js
+
+regions[header]					= Header
+regions[content]				= Content
+regions[sidebar]  			= Sidebar
+regions[footer]					= Footer
