@@ -1,12 +1,15 @@
 name = Falcor
-description = A boilerplate theme packaged with Modernizr, jquery 1.7.1, Flexslider, inuitCSS 4.5.5, and a boxsizing polyfill.
+description = Project starter theme by <a href="https://twitter.com/aaronlsilber" target="_blank">Aaron Silber</a>. Includes Modernizr, jQuery 1.7.1, Flexslider, <a href="https://github.com/csswizardry/inuit.css/tree/v4.5.5" target="_blank">inuitCSS 4.5.5</a>, and a boxsizing polyfill.
 core = 7.x
 engine = phptemplate
 
-stylesheets[all][] = css/style.css
+screenshot = assets/img/screenshot.png
 
-scripts[] = js/plugins.js
-scripts[] = js/script.js
+stylesheets[all][] = assets/css/style.css
+stylesheets[print][] = assets/css/print.css
+
+scripts[] = assets/js/plugins.js
+scripts[] = assets/js/script.js
 
 regions[header]					= Header
 regions[content]				= Content

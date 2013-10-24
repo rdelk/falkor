@@ -4,40 +4,43 @@
  * HTML
  */
 
-  function falcor_preprocess_html(&$variables) {
+  function falcor_preprocess_html(&$vars) {
+
+    // Optionally, drop the site slogan from the page <title>
     if(drupal_is_front_page()) {
-      $variables['head_title'] = $variables['head_title_array']['name'];
+      // $vars['head_title'] = $vars['head_title_array']['name'];
     }
   }
 
-  function falcor_process_html(&$variables) {
+  function falcor_process_html(&$vars) {
+    global $base_path;
     global $theme_path;
     
     // Constructing some resources for the <head>
     $html5head  = '<meta charset="utf-8">'.PHP_EOL;
     $html5head .= '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">'.PHP_EOL;
-    $html5head .= '<link rel="shortcut icon" href="/'.$theme_path.'/favicon.ico?v=2">'.PHP_EOL;
-    $html5head .= '<link rel="apple-touch-icon" href="/'.$theme_path.'/apple-touch-icon.png">'.PHP_EOL;
+    $html5head .= '<meta name="viewport" content="width=device-width, initial-scale=1" />'.PHP_EOL;
+    $html5head .= '<link rel="author" href="'.$base_path.$theme_path.'/humans.txt" />'.PHP_EOL;
     // Add $html5head to $head since other modules use this (i.e. Meta Tags)
-    $variables['head'] .= $html5head;
+    $vars['head'] .= $html5head;
 
     // Modernizr
     // http://modernizr.com/
-    $variables['modernizr'] = '<script src="/'.$theme_path.'/js/libs/modernizr.min.js"></script>';
+    $vars['modernizr'] = '<script src="'.$base_path.$theme_path.'/assets/js/libs/modernizr.min.js"></script>';
   }
   
 /*
  * Page
  */
   
-  function falcor_preprocess_page(&$variables) {
+  function falcor_preprocess_page(&$vars) {
     global $theme_path;
 
     // If tabs exist, add some classes to use in templating
-    if( !empty($variables['tabs']['#primary']) || !empty($variables['tabs']['#secondary']) ) {
-      $variables['tabs_classes'] = 'tabs-container';
+    if( !empty($vars['tabs']['#primary']) || !empty($vars['tabs']['#secondary']) ) {
+      $vars['tabs_classes'] = 'tabs--container';
     } else {
-      $variables['tabs_classes'] = null;
+      $vars['tabs_classes'] = null;
     }
     
   }
@@ -46,7 +49,7 @@
  * Regions
  */
   
-  function falcor_preprocess_region(&$variables) {
+  function falcor_preprocess_region(&$vars) {
 
   }
 
@@ -59,40 +62,42 @@
  * Blocks
  */
   
-  function falcor_preprocess_block(&$variables, $hook) {
+  function falcor_preprocess_block(&$vars, $hook) {
+    $vars['title_attributes_array']['class'][] = 'block__title';
+    $vars['content_attributes_array']['class'][] = 'block__content';
 
-    switch($variables['block_html_id']) {
-      case 'block-system-main':
-        // Use a bare template for the page's main content.
-        $variables['theme_hook_suggestions'][] = 'block__bare';
-        break;
+    // Changing the Block module's naming convention from 
+    // 'block-[module]' to 'block--[module]' to better match the BEM syntax
+    $vars['block_html_id'] = $vars['block']->module . '--' . $vars['block']->delta;
+    foreach ($vars['classes_array'] as $key => $value) {
+      $vars['classes_array'][$key] = preg_replace('/block-/', 'block--', $vars['classes_array'][$key], 1);
     }
-
-    $variables['title_attributes_array']['class'][] = 'block__title';
   }
 
-  function falcor_process_block(&$variables, $hook) {
+  function falcor_process_block(&$vars, $hook) {
 
     // Drupal 7 should use a $title variable instead of $block->subject.
-    $variables['title'] = $variables['block']->subject;
+    $vars['title'] = $vars['block']->subject;
   }
 
 /*
  * Nodes
  */
 
-  function falcor_preprocess_node($variables) {
+  function falcor_preprocess_node($vars) {
     global $theme_path;
-    $node_type = $variables['type'];
+    $node_type = $vars['type'];
 
-    $variables['submitted'] = t('@date', array('@date' => date("l, M jS, Y", $variables['created']) ) );
+    // Formatting submitted dates in a more user-friendly manner
+    // i.e. Monday, Jan 15th, 2012
+    $vars['submitted'] = t('@date', array('@date' => date("l, M jS, Y", $vars['created']) ) );
   }
 
 /*
  * Terms
  */
 
-  function falcor_preprocess_taxonomy_term(&$variables) {
+  function falcor_preprocess_taxonomy_term(&$vars) {
 
   }
 
@@ -105,12 +110,12 @@
  * Menus
  */
 
-  function falcor_menu_tree__main_menu(&$variables) {
-    return '<ul class="nav">' . $variables['tree'] . '</ul>';
+  function falcor_menu_tree__main_menu(&$vars) {
+    return '<ul class="nav">' . $vars['tree'] . '</ul>';
   }
 
-  function falcor_menu_link($variables) {
-    $element = $variables['element'];
+  function falcor_menu_link($vars) {
+    $element = $vars['element'];
 
     $sub_menu = $element['#below'] ? drupal_render($element['#below']) : '';
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);

@@ -7,7 +7,7 @@
   <?php print render($title_suffix); ?>
 
 	<?php if( $content ) { ?>
-  <div class="content"<?php print $content_attributes; ?>>
+  <div <?php print $content_attributes; ?>>
     <?php print $content ?>
   </div>
   <?php } ?>
