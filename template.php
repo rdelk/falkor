@@ -51,6 +51,18 @@
   
   function falcor_preprocess_region(&$vars) {
 
+    /* Getting the human-readable name of a region for use in templates */
+    $regions_list = system_region_list('falcor', $show = REGIONS_ALL);
+    $vars['region_name'] = $regions_list[$vars['region']];
+
+    /*
+      Changing class naming conventions for regions from
+      'region-[region_name]' to 'region--[region_name]'
+     */
+    foreach ($vars['classes_array'] as $key => $value) {
+      $vars['classes_array'][$key] = preg_replace('/region-/', 'region--', $vars['classes_array'][$key], 1);
+    }
+
   }
 
 /*
@@ -63,6 +75,14 @@
  */
   
   function falcor_preprocess_block(&$vars, $hook) {
+
+    switch($vars['block_html_id']) {
+      case 'block-system-main':
+        // Use a bare template for the page's main content.
+        $vars['theme_hook_suggestions'][] = 'block__bare';
+        break;
+    }
+
     $vars['title_attributes_array']['class'][] = 'block__title';
     $vars['content_attributes_array']['class'][] = 'block__content';
 
@@ -72,12 +92,19 @@
     foreach ($vars['classes_array'] as $key => $value) {
       $vars['classes_array'][$key] = preg_replace('/block-/', 'block--', $vars['classes_array'][$key], 1);
     }
+
+    if($vars['block']->subject != '') {
+      // Drupal 7 should use a $title variable instead of $block->subject.
+      $vars['title'] = $vars['block']->subject;
+    } else {
+      $vars['title'] = 'Untitled Section';
+      $vars['title_attributes_array']['class'][] = 'element-invisible';
+    }
+
   }
 
   function falcor_process_block(&$vars, $hook) {
 
-    // Drupal 7 should use a $title variable instead of $block->subject.
-    $vars['title'] = $vars['block']->subject;
   }
 
 /*
