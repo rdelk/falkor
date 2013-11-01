@@ -2,3 +2,4 @@
 if ($content) {
   print $content;
 }
+?>

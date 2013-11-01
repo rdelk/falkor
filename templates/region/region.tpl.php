@@ -1,3 +1,6 @@
-<?php if (!empty($content)): ?>
-  <?php print $content; ?>
-<?php endif; ?>
+
+<div class="<?php print $classes; ?>">
+	<?php if ($content): ?>
+	  <?php print $content; ?>
+	<?php endif; ?>
+</div>

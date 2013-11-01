@@ -1,4 +1,4 @@
-<header class="page__header">
+<header class="page__header" role="banner">
 
   <h1 class="site-name">
     <a href="<?php print check_url($front_page); ?>" title="<?php print check_plain($site_name); ?>">
@@ -26,7 +26,8 @@
   </div>
   <?php } ?>
 
-	<nav>
+	<nav role="navigation">
+    <h1 class="element-invisible">Site Navigation</h1>
 		<?php 
 		$main_menu = menu_tree('main-menu');
 		print drupal_render($main_menu);
