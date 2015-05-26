@@ -8,10 +8,6 @@
  */
 
 
-/* Theme Path */
-
-$theme_path: '/sites/all/themes/falcor';
-
 /**
  * Debug mode will visually highlight any potential markup/accessibility quirks
  * in the browser. Set to `true` or `false`.
@@ -49,13 +45,13 @@ $brand-round:        3px!default;
 /**
  * Responsiveness?
  */
-$responsive:        false!default;
+$responsive:        true!default;
 
 /**
  * Responsiveness for widescreen/high resolution desktop monitors and beyond?
  * Note: $responsive parameter above must be enabled before enabling this.
  */
-$responsive-extra:  false!default;
+$responsive-extra:  true!default;
 
 /**
  * Responsive push and pull produce a LOT of code, only turn them on if you
@@ -71,6 +67,7 @@ $lap-start:         30em!default;
 $desk-start:        40em!default;
 $desk-wide-start: 	50em!default;
 
+$gutter-width: 		$base-line-height!default;
 $max-width: 		$desk-wide-start!default;
 $breakpoints: 		palm lap portable desk desk-wide;
 
@@ -96,7 +93,7 @@ $micro-size:        10px!default;
 /**
  * English quote marks?
  */
-$english-quotes:    true!default;
+$english-quotes:    false!default;
 
 /**
  * If you want English quotes then please do not edit these; they’re only here
