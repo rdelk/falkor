@@ -1,5 +1,6 @@
-css/.sass-cache
+assets/css/.sass-cache
 *.sublime-project
 *.sublime-workspace
 Thumbs.db
 *.sublime-projectcompletions
+app
