@@ -23,10 +23,6 @@
     $html5head .= '<link rel="author" href="'.$base_path.$theme_path.'/humans.txt" />'.PHP_EOL;
     // Add $html5head to $head since other modules use this (i.e. Meta Tags)
     $vars['head'] .= $html5head;
-
-    // Modernizr
-    // http://modernizr.com/
-    $vars['modernizr'] = '<script src="'.$base_path.$theme_path.'/assets/js/libs/modernizr.min.js"></script>';
   }
   
 /*

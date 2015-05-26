@@ -9,6 +9,7 @@ screenshot = assets/img/screenshot.png
 stylesheets[all][] = assets/css/style.css
 
 ;Libraries
+scripts[] = app/components/modernizr/modernizr.js
 
 ;Plugins
 
