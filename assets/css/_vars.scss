@@ -67,9 +67,12 @@ $responsive-pull:   false!default;
 /**
  * Tell inuit.css when breakpoints start.
  */
-$lap-start:         481px!default;
-$desk-start:        1024px!default;
-$desk-wide-start: 	1200px!default;
+$lap-start:         30em!default;
+$desk-start:        40em!default;
+$desk-wide-start: 	50em!default;
+
+$max-width: 		$desk-wide-start!default;
+$breakpoints: 		palm lap portable desk desk-wide;
 
 
 /**

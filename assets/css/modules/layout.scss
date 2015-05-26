@@ -1,3 +1,61 @@
+/*
+ * Utilities
+ */
+
+	* {
+		*behavior: url('#{$theme_path}/js/boxsizing.htc');
+	}
+
+	.element--invisible {
+		position: absolute !important;
+		clip: rect(1px 1px 1px 1px);
+		clip: rect(1px,1px,1px,1px);
+		overflow: hidden;
+		height: 1px;
+	}
+
+	%kill-last-child {
+		& > *:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	%ir {
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	.l-center-block {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.l-contain {
+		max-width: $max-width;
+		margin: 0 auto;
+
+		padding: 0 $gutter-width/2;
+
+		@include media-query(lap-and-up) {
+			padding: 0 $gutter-width;
+		}
+	}
+
+	.expand {
+		display: block;
+		width: 100%;
+	}
+
+	@each $breakpoint in $breakpoints {
+		.hide--#{$breakpoint} {
+			@include media-query($breakpoint) {
+				display: none;
+				visibility: hidden;
+			}
+		}
+	}
+
 /* 
  * Low-level structural containers
  */
@@ -8,45 +66,4 @@
 
 	body {
 		
-	}
-
-	* {
-		*behavior: url('#{$theme_path}/js/boxsizing.htc');
-	}
-
-	.l-wrap {
-		width: 1000px;
-		margin: 0 auto;
-	}
-
-	.front .page-header {
-		background: none;
-	}
-
-	.page-header {
-		padding-top: $half-spacing-unit;
-		background: url('#{$theme_path}/img/bg_header.jpg') no-repeat 50% top;
-
-		nav {
-			margin-top: $half-spacing-unit;
-		}
-	}
-
-	.page-title {
-		padding: $half-spacing-unit 0 $half-spacing-unit 20px;
-		margin: 0;
-	}
-
-	.page-content {
-		
-	}
-
-		.not-front .page-content {
-			padding: $base-spacing-unit 0;
-		}
-
-	.page-footer {
-		padding: $base-spacing-unit 0;
-
-		color: $plain;
 	}
