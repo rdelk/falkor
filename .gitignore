@@ -3,4 +3,5 @@ assets/css/.sass-cache
 *.sublime-workspace
 Thumbs.db
 *.sublime-projectcompletions
-app
+node_modules
+src/components
