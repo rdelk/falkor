@@ -84,10 +84,6 @@
 
   }
 
-  function falcor_process_block(&$vars, $hook) {
-
-  }
-
 /*
  * Nodes
  */
@@ -105,9 +101,6 @@
  * Terms
  */
 
-  function falcor_preprocess_taxonomy_term(&$vars) {
-
-  }
 
 /*
  * Forms
