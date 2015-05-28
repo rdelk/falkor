@@ -2,7 +2,7 @@
 Falkor theme for Drupal 7
 =========================
 
-This is a bare-bones Drupal 7 theme built using the inuitCSS framework (v4.2.2).
+This is a bare-bones Drupal 7 theme built using the inuitCSS framework (v4.5.5).
 
 Drupal Regions
 -------------------------
