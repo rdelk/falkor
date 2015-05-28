@@ -15,7 +15,7 @@ Drupal Regions
 Drupal Function Overrides
 -------------------------
 
-* theme_preprocesS_html()
+* theme_preprocess_html()
 * theme_process_html()
 * theme_preprocess_page()
 * theme_preprocess_region()
