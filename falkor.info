@@ -3,18 +3,18 @@ description = Project starter theme by <a href="https://twitter.com/aaronlsilber
 core = 7.x
 engine = phptemplate
 
-screenshot = assets/img/screenshot.png
+screenshot = dist/img/screenshot.png
 
 ;Stylesheets
-stylesheets[all][] = assets/css/style.css
+stylesheets[all][] = dist/css/style.min.css
 
 ;Libraries
-scripts[] = app/components/modernizr/modernizr.js
+scripts[] = dist/components/modernizr/modernizr.min.js
 
 ;Plugins
 
 ;Scripts
-scripts[] = assets/js/script.js
+scripts[] = dist/js/scripts.min.js
 
 ;Regions
 regions[header]					= Header

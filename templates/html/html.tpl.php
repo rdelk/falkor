@@ -18,13 +18,6 @@
 
     <![endif]-->
 
-    <?php 
-      // Import the Modernizr library 
-      // We don't want this to be run through Drupal's drupal_add_js function
-      // as it needs initialization priorities
-      print $modernizr;
-    ?>
-
   </head>
 
   <body class="<?php print $classes; ?>" <?php print $attributes; ?>>
